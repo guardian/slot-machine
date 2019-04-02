@@ -187,17 +187,17 @@ class ComponentChooserScreen extends Component {
         }
 
         return (
-        <div>
+            <div>
 
-            <SlotOutline widthToHeightRatio={1} name="RelatedStories" onClick={()=>progress("RelatedStories")}/>
-            <SlotOutline widthToHeightRatio={1} name="CookieBanner" onClick={()=>progress("CookieBanner")}/>
-            <SlotOutline widthToHeightRatio={1} name="ConsentScreen" onClick={()=>progress("ConsentScreen")}/>
-            <SlotOutline widthToHeightRatio={1} name="GiveUsMoney" onClick={()=>progress("GiveUsMoney")}/>
-            <SlotOutline widthToHeightRatio={1} name="MostRead" onClick={()=>progress("MostRead")}/>
+                <SlotOutline widthToHeightRatio={1} name="RelatedStories" onClick={()=>progress("RelatedStories")}/>
+                <SlotOutline widthToHeightRatio={1} name="CookieBanner" onClick={()=>progress("CookieBanner")}/>
+                <SlotOutline widthToHeightRatio={1} name="ConsentScreen" onClick={()=>progress("ConsentScreen")}/>
+                <SlotOutline widthToHeightRatio={1} name="GiveUsMoney" onClick={()=>progress("GiveUsMoney")}/>
+                <SlotOutline widthToHeightRatio={1} name="MostRead" onClick={()=>progress("MostRead")}/>
 
-            <h2>Choose a visual component!</h2>
+                <h2>Choose a visual component!</h2>
 
-        </div>
+            </div>
         );
   
     }
@@ -209,9 +209,10 @@ class ProgressIndicator extends Component {
     render() {
 
         return (
-        <div className="progress-indicator">
-            {this.props.page}
-        </div>)
+            <div className="progress-indicator">
+                {this.props.page}
+            </div>
+        )
 
     }
 
@@ -232,15 +233,22 @@ class Wizard extends Component {
   
     render() {
 
+        // wizard finished (no more screens)
+
+        const finished = () => {
+            this.props.onFinished(this.state.wizardData);
+        }
+
+        // move to next screen
 
         const progress = (screens, screenData) => {
 
-            console.log("progressing with data:");
-            console.log(screenData);
+            var tmp = this.state.wizardData;
+            Object.assign(tmp, screenData);
+            this.setState({wizardData: tmp});
 
             if(this.state.currentScreen === screens.length-1){
-                // we finished the wizard
-                console.log("Finished");
+                finished();
                 return;
             }
 
@@ -257,14 +265,15 @@ class Wizard extends Component {
         ];
 
         return (
-        <div className="wizard">
+            <div className="wizard">
 
-            <h1>New Profile!</h1>
-            {screens[this.state.currentScreen]}
+                <h1>New Profile!</h1>
 
-            <ProgressIndicator page={this.state.currentScreen+1}/>
+                {screens[this.state.currentScreen]}
 
-        </div>
+                <ProgressIndicator page={this.state.currentScreen+1}/>
+
+            </div>
         );
   
     }

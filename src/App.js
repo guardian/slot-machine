@@ -32,6 +32,11 @@ class App extends Component {
 
   render() {
 
+    const finishedProfileSetup = (config) => {
+      console.log("Wizard finished with profile configuration");
+      console.log(config);
+    }
+
     return (
       <div className="App">
 
@@ -43,7 +48,7 @@ class App extends Component {
           </Toolbar>
         </AppBar>
         <div className="app-content">
-          <Wizard />
+          <Wizard onFinished={(config)=>finishedProfileSetup(config)}/>
         </div>
       </div>
     );
