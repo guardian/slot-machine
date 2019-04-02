@@ -10,8 +10,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { Exception } from 'handlebars';
-
 class SlotOutline extends Component {
 
     render() {
@@ -144,8 +142,6 @@ class RulesScreen extends Component {
                             </Button>
                         </FormControl>
                     </div>
-
-
 
                 </FormControl>
 
