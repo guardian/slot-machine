@@ -46,7 +46,7 @@ class SlotChooserScreen extends Component {
         }
 
         const progress = (typ) => {
-            this.props.onNext();
+            this.props.onNext({slotType: typ});
         }
 
         return (
@@ -82,6 +82,17 @@ class RulesScreen extends Component {
     render() {
 
         const { contributor, adblock, somethingelse } = this.state;
+
+        const progress = () => {
+            this.props.onNext({
+                name: "todo", 
+                abtest: "todo", 
+                flags: {
+                    contributor: this.state.contributor,
+                    adblock: this.state.adblock
+                }
+            });
+        }
 
         const handleChange = (a)=>{
             if(a === "contributor"){
@@ -143,7 +154,7 @@ class RulesScreen extends Component {
 
                     <div>
                         <FormControl margin="normal" fullWidth={true}>
-                            <Button variant="contained" color="primary">
+                            <Button variant="contained" color="primary" onClick={progress}>
                                 Finish
                             </Button>
                         </FormControl>
@@ -155,7 +166,7 @@ class RulesScreen extends Component {
 
             </form>
 
-            <h2>Enter Rules!</h2>
+            <h2>Enter Configuration!</h2>
 
             
         </div>
@@ -171,8 +182,8 @@ class ComponentChooserScreen extends Component {
   
         // TODO: parameterise components, they come from the API
 
-        const progress = (typ) => {
-            this.props.onNext();
+        const progress = (name) => {
+            this.props.onNext({component: name});
         }
 
         return (
@@ -213,27 +224,37 @@ class Wizard extends Component {
         super();
 
         this.state = {
-            currentScreen : 0
+            currentScreen : 0,
+            wizardData: {}
         }
 
     }
   
     render() {
 
-        const progress = () => {
 
-            console.log("progressing");
+        const progress = (screens, screenData) => {
+
+            console.log("progressing with data:");
+            console.log(screenData);
+
+            if(this.state.currentScreen === screens.length-1){
+                // we finished the wizard
+                console.log("Finished");
+                return;
+            }
 
             this.setState({
                 currentScreen: this.state.currentScreen + 1
-            })
+            });
+
         }
-  
+
         const screens = [
-            <SlotChooserScreen onNext={progress}/>,
-            <ComponentChooserScreen onNext={progress} />,
-            <RulesScreen onNext={progress} />
-        ]
+            <SlotChooserScreen onNext={(d)=>progress(screens, d)}/>,
+            <ComponentChooserScreen onNext={(d)=>progress(screens, d)} />,
+            <RulesScreen onNext={(d)=>progress(screens, d)} />
+        ];
 
         return (
         <div className="wizard">
