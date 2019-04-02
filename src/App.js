@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import SlotsAPI from './proxies/slotsAPI';
-import Wizard from './components/wizard';
-import Landing from './components/landing';
+import Wizard from './screens/wizard';
+import Landing from './screens/landing';
 
 class App extends Component {
 
