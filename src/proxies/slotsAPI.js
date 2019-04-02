@@ -7,9 +7,10 @@ class SlotsAPI {
 
         this._components = [
             { name: "EpicBanner", slot: "banner" },
-            { name: "BannerAd", slot: "ad" },
+            { name: "AskForMoneyBanner", slot: "banner" },
             { name: "RelatedStories", slot: "onwards" },
             { name: "MostViewed", slot: "onwards" },
+            { name: "Ad", slot: "onwards" },
         ];
 
         this._slots = [
