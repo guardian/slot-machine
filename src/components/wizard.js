@@ -15,10 +15,6 @@ import { Exception } from 'handlebars';
 class SlotOutline extends Component {
 
     render() {
-        
-        if(!this.props.widthToHeightRatio){
-            throw new Exception("No width to height ratio defined for slot outline");
-        }
 
         const slotStyle = {
             height: "10em",
@@ -39,12 +35,6 @@ class SlotChooserScreen extends Component {
 
     render() {
   
-        // TODO: parameterise slot outlines, they come from the API
-
-        if(!this.props.onNext){
-            throw new Exception("No onNext defined for slot outline");
-        }
-
         const progress = (typ) => {
             this.props.onNext({slotType: typ});
         }
@@ -102,10 +92,6 @@ class RulesScreen extends Component {
                 this.setState({somethingelse: !this.state.somethingelse})
             }
         };
-  
-        if(!this.props.onNext){
-            throw new Exception("No onNext defined for slot outline");
-        }
         
         return (
         <div>
@@ -167,7 +153,6 @@ class RulesScreen extends Component {
 
             <h2>Enter Configuration!</h2>
 
-            
         </div>
         );
   
@@ -179,8 +164,6 @@ class ComponentChooserScreen extends Component {
 
     render() {
   
-        // TODO: parameterise components, they come from the API
-
         const progress = (name) => {
             this.props.onNext({component: name});
         }
