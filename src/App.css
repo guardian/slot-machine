@@ -48,8 +48,16 @@ body {
   margin: 4em;
 }
 
+.rules-form {
+  text-align: left;
+  width: 20em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h1 {
   font-family: Caveat;
+  font-size: 2.5em;
 }
 
 h2 {
