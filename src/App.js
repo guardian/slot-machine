@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import SlotsAPI from './proxies/slotsAPI'
+
+import SlotsAPI from './proxies/slotsAPI';
+import Wizard from './components/wizard';
 
 class App extends Component {
 
@@ -31,8 +32,6 @@ class App extends Component {
 
   render() {
 
-    const items = this.state.slotComponents.map((item)=><li>{item.name} ({item.slot})</li>);
-
     return (
       <div className="App">
 
@@ -43,20 +42,9 @@ class App extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <header className="App-header">
-          
-          <p><img alt="pikachu with open mouth looking surprised" class="pikachu" src="https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png"></img></p>
-          <h2>Slots</h2>
-
-          <ul>
-            {items}
-          </ul>
-
-          <Button variant="contained" color="primary">
-            New Profile
-          </Button>
-
-        </header>
+        <div className="app-content">
+          <Wizard />
+        </div>
       </div>
     );
 
