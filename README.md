@@ -12,3 +12,10 @@ This is a yarn+webpack+react app, with two dependencies: material-ui and react-r
 ## Running, etc
 
 We started from create-react-app, so standard ```yarn start```,  ```yarn test```, ```yarn build``` scripts are available.
+
+```
+git clone git@github.com:guardian/slot-machine.git
+cd slot-machine
+yarn
+yarn start
+```
