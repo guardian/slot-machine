@@ -49,16 +49,15 @@ class SlotChooserScreen extends Component {
             this.props.onNext({slotType: typ});
         }
 
+        const slots = this.props.slots.map(
+            (s)=><SlotOutline widthToHeightRatio={s.widthToHeightRatio} name={s.name} onClick={()=>progress(s.name)}/>
+        );
+
         return (
-        <div>
-
-            <SlotOutline widthToHeightRatio={3} name="banner" onClick={()=>progress("banner")}/>
-            <SlotOutline widthToHeightRatio={1} name="ad" onClick={()=>progress("ad")}/>
-            <SlotOutline widthToHeightRatio={1.5} name="onwards" onClick={()=>progress("onwards")}/>
-
-            <h2>Choose a slot type!</h2>
-            
-        </div>
+            <div>
+                {slots}
+                <h2>Choose a slot type!</h2>
+            </div>
         );
   
     }
@@ -186,17 +185,14 @@ class ComponentChooserScreen extends Component {
             this.props.onNext({component: name});
         }
 
+        const components = this.props.components.map(
+            (s)=><SlotOutline widthToHeightRatio={1} name={s.name} onClick={()=>progress(s.name)}/>
+        );
+
         return (
             <div>
-
-                <SlotOutline widthToHeightRatio={1} name="RelatedStories" onClick={()=>progress("RelatedStories")}/>
-                <SlotOutline widthToHeightRatio={1} name="CookieBanner" onClick={()=>progress("CookieBanner")}/>
-                <SlotOutline widthToHeightRatio={1} name="ConsentScreen" onClick={()=>progress("ConsentScreen")}/>
-                <SlotOutline widthToHeightRatio={1} name="GiveUsMoney" onClick={()=>progress("GiveUsMoney")}/>
-                <SlotOutline widthToHeightRatio={1} name="MostRead" onClick={()=>progress("MostRead")}/>
-
+                {components}
                 <h2>Choose a visual component!</h2>
-
             </div>
         );
   
@@ -259,8 +255,8 @@ class Wizard extends Component {
         }
 
         const screens = [
-            <SlotChooserScreen onNext={(d)=>progress(screens, d)}/>,
-            <ComponentChooserScreen onNext={(d)=>progress(screens, d)} />,
+            <SlotChooserScreen slots={this.props.slots} onNext={(d)=>progress(screens, d)}/>,
+            <ComponentChooserScreen components={this.props.components} onNext={(d)=>progress(screens, d)} />,
             <RulesScreen onNext={(d)=>progress(screens, d)} />
         ];
 

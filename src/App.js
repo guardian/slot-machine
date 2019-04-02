@@ -15,7 +15,8 @@ class App extends Component {
     this.slotsAPI = new SlotsAPI();
 
     this.state = {
-      slotComponents: [],
+      slots: [],
+      components: []
     };
 
   }
@@ -25,7 +26,8 @@ class App extends Component {
     // contact 3rd party services, etc
 
     this.setState({
-      slotComponents: this.slotsAPI.allComponents()
+      components: this.slotsAPI.components(),
+      slots: this.slotsAPI.slots()
     });
 
   }
@@ -48,7 +50,11 @@ class App extends Component {
           </Toolbar>
         </AppBar>
         <div className="app-content">
-          <Wizard onFinished={(config)=>finishedProfileSetup(config)}/>
+          <Wizard 
+            slots={this.state.slots}
+            components={this.state.components}
+            onFinished={(config)=>finishedProfileSetup(config)}
+          />
         </div>
       </div>
     );

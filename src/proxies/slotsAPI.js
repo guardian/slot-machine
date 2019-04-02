@@ -5,25 +5,27 @@ class SlotsAPI {
 
     constructor() {
 
-        this.components = [
+        this._components = [
             { name: "EpicBanner", slot: "banner" },
             { name: "BannerAd", slot: "ad" },
             { name: "RelatedStories", slot: "onwards" },
             { name: "MostViewed", slot: "onwards" },
         ];
 
+        this._slots = [
+            { name: "banner", widthToHeightRatio:3, "id": "banner" },
+            { name: "ad", widthToHeightRatio:1, "id": "ad" },
+            { name: "onwards", widthToHeightRatio:1.5, "id": "onwards" }
+        ];
+
     }
 
-    slotTypes() {
-        return [
-            { name: "banner", widthToHeightRatio:"1.3", "id": "banner" },
-            { name: "ad", widthToHeightRatio:"1.3", "id": "ad" },
-            { name: "onwards", widthToHeightRatio:"1.3", "id": "onwards" }
-        ]
+    slots() {
+        return this._slots;
     }
 
-    allComponents() {
-        return this.components;
+    components() {
+        return this._components;
     }
 
     componentsForSlotType(slotType) {
