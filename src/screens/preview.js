@@ -57,6 +57,7 @@ class Preview extends Component {
         }
     };
 
+    // TODO debounce this!
     fetchComponent = event => {
         const value = event.target.value;
         this.setState({ componentURL: value });
