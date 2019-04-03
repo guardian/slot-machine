@@ -16,6 +16,7 @@ We started from create-react-app, so standard ```yarn start```,  ```yarn test```
 ```
 git clone git@github.com:guardian/slot-machine.git
 cd slot-machine
+nvm use
 yarn
 yarn start
 ```
