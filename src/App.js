@@ -36,7 +36,6 @@ class App extends Component {
 
     }
 
-
     componentDidMount() {
         // contact 3rd party services, etc
 
@@ -44,6 +43,7 @@ class App extends Component {
             components: this.slotsAPI.components(),
             slots: this.slotsAPI.slots()
         });
+
     }
 
     render() {
@@ -84,7 +84,9 @@ class App extends Component {
             </div>
         );
     }
+    
 }
+
   
 
 export default App;

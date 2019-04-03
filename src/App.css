@@ -71,3 +71,8 @@ h2 {
   margin-right: 10%;
   margin-top: 3em;
 }
+
+.toolbar-link {
+  color: white;
+  text-decoration: none;
+}

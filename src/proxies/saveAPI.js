@@ -1,11 +1,25 @@
 
-// proxy for a future save data lambda API
+import AppConfig from '../config';
 
 class SaveAPI {
 
     addProfile(config) {
-        // we will need to read up the existing json blob, parse it
-        // write the new profile to it, and then save it back.
+
+        const endpoint = (new AppConfig()).profileEndpoint;
+
+        return fetch(endpoint, {
+            method: "POST", 
+            mode: "cors", 
+            cache: "no-cache", 
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(config), 
+        })
+        .then(response => response.json());
+
     }
 
 }
