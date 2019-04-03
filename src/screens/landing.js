@@ -6,7 +6,7 @@ class Landing extends Component {
     render() {
 
         return (
-            <div class="landing">
+            <div className="landing">
                 <h1>Welcome</h1>
                 <Link to="/new">create new profile</Link>
             </div>

@@ -38,13 +38,43 @@ class SlotChooserScreen extends Component {
         }
 
         const slots = this.props.slots.map(
-            (s)=><SlotOutline key={s.name} widthToHeightRatio={s.widthToHeightRatio} name={s.name} onClick={()=>progress(s.name)}/>
+            (s)=><SlotOutline key={s.name} widthToHeightRatio={s.widthToHeightRatio} name={s.name} onClick={()=>progress(s)}/>
         );
 
         return (
             <div>
                 {slots}
                 <h2>Choose a slot type!</h2>
+            </div>
+        );
+  
+    }
+
+}
+
+class ComponentChooserScreen extends Component {
+
+    render() {
+
+        const progress = (name) => {
+            this.props.onNext({component: name});
+        }
+
+        const components = this.props.components
+            .filter((c)=>c.slot === this.props.slot.name)
+            .map((c)=>
+                <SlotOutline 
+                    key={c.name} 
+                    widthToHeightRatio={this.props.slot.widthToHeightRatio} 
+                    name={c.name} 
+                    onClick={()=>progress(c.name)}
+                />
+            );
+
+        return (
+            <div>
+                {components}
+                <h2>Choose a visual component!</h2>
             </div>
         );
   
@@ -156,33 +186,6 @@ class RulesScreen extends Component {
 
 }
 
-class ComponentChooserScreen extends Component {
-
-    render() {
-
-        console.log("Components for slot " + this.props.slot);
-  
-        const progress = (name) => {
-            this.props.onNext({component: name});
-        }
-
-        const components = this.props.components
-            .filter((c)=>c.slot === this.props.slot)
-            .map(
-                (c)=><SlotOutline key={c.name} widthToHeightRatio={1} name={c.name} onClick={()=>progress(c.name)}/>
-            );
-
-        return (
-            <div>
-                {components}
-                <h2>Choose a visual component!</h2>
-            </div>
-        );
-  
-    }
-
-}
-
 class ProgressIndicator extends Component {
 
     render() {
@@ -248,7 +251,7 @@ class Wizard extends Component {
 
                 <h1>New Profile!</h1>
 
-                {screens[this.state.currentScreen]}
+                { screens[this.state.currentScreen] }
 
                 <ProgressIndicator page={this.state.currentScreen+1}/>
 
