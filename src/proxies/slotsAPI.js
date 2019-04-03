@@ -9,8 +9,10 @@ class SlotsAPI {
             { name: "EpicBanner", slot: "banner" },
             { name: "AskForMoneyBanner", slot: "banner" },
             { name: "RelatedStories", slot: "onwards" },
-            { name: "MostViewed", slot: "onwards" },
-            { name: "Ad", slot: "onwards" },
+            { name: "MostRead", slot: "onwards" },
+            { name: "LongestRead", slot: "onwards" },
+            { name: "Outbrain", slot: "ad" },
+            { name: "GoogleAd", slot: "ad" }
         ];
 
         this._slots = [

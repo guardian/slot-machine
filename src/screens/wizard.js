@@ -38,7 +38,7 @@ class SlotChooserScreen extends Component {
         }
 
         const slots = this.props.slots.map(
-            (s)=><SlotOutline widthToHeightRatio={s.widthToHeightRatio} name={s.name} onClick={()=>progress(s.name)}/>
+            (s)=><SlotOutline key={s.name} widthToHeightRatio={s.widthToHeightRatio} name={s.name} onClick={()=>progress(s.name)}/>
         );
 
         return (
@@ -159,14 +159,18 @@ class RulesScreen extends Component {
 class ComponentChooserScreen extends Component {
 
     render() {
+
+        console.log("Components for slot " + this.props.slot);
   
         const progress = (name) => {
             this.props.onNext({component: name});
         }
 
-        const components = this.props.components.map(
-            (s)=><SlotOutline widthToHeightRatio={1} name={s.name} onClick={()=>progress(s.name)}/>
-        );
+        const components = this.props.components
+            .filter((c)=>c.slot === this.props.slot)
+            .map(
+                (c)=><SlotOutline key={c.name} widthToHeightRatio={1} name={c.name} onClick={()=>progress(c.name)}/>
+            );
 
         return (
             <div>
@@ -235,7 +239,7 @@ class Wizard extends Component {
 
         const screens = [
             <SlotChooserScreen slots={this.props.slots} onNext={(d)=>progress(screens, d)}/>,
-            <ComponentChooserScreen components={this.props.components} onNext={(d)=>progress(screens, d)} />,
+            <ComponentChooserScreen slot={this.state.wizardData.slotType} components={this.props.components} onNext={(d)=>progress(screens, d)} />,
             <RulesScreen onNext={(d)=>progress(screens, d)} />
         ];
 
