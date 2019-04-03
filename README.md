@@ -18,5 +18,6 @@ git clone git@github.com:guardian/slot-machine.git
 cd slot-machine
 nvm use
 yarn
+<edit the config.js file>
 yarn start
 ```
