@@ -55,6 +55,10 @@ body {
   margin-right: auto;
 }
 
+.landing {
+  text-align: center;
+}
+
 h1 {
   font-family: Caveat;
   font-size: 2.5em;
