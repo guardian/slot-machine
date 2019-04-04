@@ -93,6 +93,8 @@ class RulesScreen extends Component {
             contributor: true,
             adblock: false,
             somethingelse: false,
+            name: "",
+            abtest: ""
         };
 
     }
@@ -103,8 +105,8 @@ class RulesScreen extends Component {
 
         const progress = () => {
             this.props.onNext({
-                name: "todo", 
-                abtest: "todo", 
+                name: this.state.name, 
+                abtest: this.state.abtest, 
                 flags: {
                     contributor: this.state.contributor,
                     adblock: this.state.adblock
@@ -112,7 +114,15 @@ class RulesScreen extends Component {
             });
         }
 
-        const handleChange = (a)=>{
+        const nameChanged = (n) => {
+            this.setState({name: n.target.value});
+        }
+
+        const abtestChanged = (a) => {
+            this.setState({abtest: a.target.value});
+        }
+
+        const handleChange = (a)=> {
             if(a === "contributor"){
                 this.setState({contributor: !this.state.contributor})
             } else if(a === "adblock"){
@@ -131,13 +141,13 @@ class RulesScreen extends Component {
 
                 <div><FormControl margin="normal" fullWidth={true}>
                     <InputLabel htmlFor="name-input">Name</InputLabel>
-                    <Input id="name-input" fullWidth={true} aria-describedby="name-helper-text" />
+                    <Input id="name-input" value={this.state.name} fullWidth={true} aria-describedby="name-helper-text" onChange={nameChanged}/>
                     <FormHelperText id="name-helper-text">A name for your slot profile</FormHelperText>
                 </FormControl></div>
 
                 <div><FormControl margin="normal" fullWidth={true}>
                     <InputLabel htmlFor="abtest-input">AB Test</InputLabel>
-                    <Input id="abtest-input" fullWidth={true} aria-describedby="abtest-helper-text" />
+                    <Input id="abtest-input" value={this.state.abtest} fullWidth={true} aria-describedby="abtest-helper-text" onChange={abtestChanged} />
                     <FormHelperText id="abtest-helper-text">All slot profiles must have an AB Test</FormHelperText>
                 </FormControl></div>
 

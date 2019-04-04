@@ -5,6 +5,9 @@ class SaveAPI {
 
     addProfile(config) {
 
+        console.log("Saving data");
+        console.log(config);
+
         const endpoint = (new AppConfig()).profileEndpoint;
 
         return fetch(endpoint, {

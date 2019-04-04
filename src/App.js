@@ -27,8 +27,6 @@ class App extends Component {
 
     componentDidMount() {
 
-        // contact 3rd party services, etc
-
         this.setState({
             components: this.slotsAPI.components(),
             slots: this.slotsAPI.slots()
@@ -48,7 +46,7 @@ class App extends Component {
             />
         );
 
-        const preview = () => <Preview />;
+        const preview = () => <Preview slots={this.state.slots} />;
 
         return (
             <div className="App">

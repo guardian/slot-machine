@@ -6,25 +6,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Slider from "@material-ui/lab/Slider";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import debounce from "lodash.debounce";
-
-const slots = [
-    {
-        name: "small",
-        height: 100,
-        width: 200
-    },
-    {
-        name: "medium",
-        height: 300,
-        width: 400
-    },
-    {
-        name: "large",
-        height: 600,
-        width: 900
-    }
-];
 
 const paperStyle = (height, width) => ({
     height: height + "px",
@@ -35,26 +16,47 @@ const paperStyle = (height, width) => ({
 const fetchJSON = url => {};
 
 class Preview extends Component {
-    default = slots.find(slot => slot.name === "medium");
 
-    state = {
-        componentURL: "",
-        format: this.default.name,
-        height: this.default.height,
-        width: this.default.width,
-        componentMarkup: ""
-    };
+    constructor(props) {
+        
+        super();
+
+        this.state = {
+            componentURL: "",
+            format: "",
+            height: 0,
+            width: 0,
+            componentMarkup: ""
+        };
+    
+    }
+
+    componentDidMount(){
+
+        if(this.props.slots.length > 0){
+            this.state = {
+                componentURL: "",
+                format: this.props.slots[0].name,
+                height: this.props.slots[0].height,
+                width: this.props.slots[0].width,
+                componentMarkup: ""
+            };
+        }
+
+    }
 
     handleChange = name => (event, value) => {
+
         this.setState({ [name]: value });
 
         if (name === "format") {
-            const format = slots.find(slot => slot.name === value);
+            const format = this.props.slots.find(slot => slot.name === value);
             this.setState({
                 height: format.height,
                 width: format.width
             });
         }
+
     };
 
     // TODO debounce this!
@@ -74,7 +76,18 @@ class Preview extends Component {
     // press 'r' to refresh component from URL
 
     render() {
+
+        const radioButtons = this.props.slots.map((slot)=>
+            <FormControlLabel
+                key={slot.name}
+                value={slot.name}
+                control={<Radio />}
+                label={slot.name}
+            />
+        );
+
         return (
+
             <div className="preview">
                 <Typography variant="h3">Preview</Typography>
                 <form noValidate autoComplete="off">
@@ -86,6 +99,7 @@ class Preview extends Component {
                         onChange={this.fetchComponent}
                         margin="normal"
                     />
+
                     <RadioGroup
                         row
                         aria-label="Format"
@@ -93,22 +107,9 @@ class Preview extends Component {
                         value={this.state.format}
                         onChange={this.handleChange("format")}
                     >
-                        <FormControlLabel
-                            value="small"
-                            control={<Radio />}
-                            label="Small"
-                        />
-                        <FormControlLabel
-                            value="medium"
-                            control={<Radio />}
-                            label="Medium"
-                        />
-                        <FormControlLabel
-                            value="large"
-                            control={<Radio />}
-                            label="Large"
-                        />
+                        { radioButtons }
                     </RadioGroup>
+
                     <div>
                         <Typography id="height-slider-label">Height</Typography>
                         <Slider

@@ -16,9 +16,9 @@ class SlotsAPI {
         ];
 
         this._slots = [
-            { name: "banner", widthToHeightRatio:3, "id": "banner" },
-            { name: "articleTopRight", widthToHeightRatio:1, "id": "articleTopRight" },
-            { name: "onwards", widthToHeightRatio:1.5, "id": "onwards" }
+            { name: "banner", height: 300, width: 900, widthToHeightRatio:3, "id": "banner" },
+            { name: "articleTopRight", height: 300, width: 300, widthToHeightRatio:1, "id": "articleTopRight" },
+            { name: "onwards", height: 300, width: 450, widthToHeightRatio:1.5, "id": "onwards" }
         ];
 
     }
