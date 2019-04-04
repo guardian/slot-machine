@@ -11,14 +11,14 @@ class SlotsAPI {
             { name: "RelatedStories", slot: "onwards" },
             { name: "MostRead", slot: "onwards" },
             { name: "LongestRead", slot: "onwards" },
-            { name: "Outbrain", slot: "ad" },
-            { name: "GoogleAd", slot: "ad" }
+            { name: "Outbrain", slot: "articleTopRight" },
+            { name: "GoogleAd", slot: "articleTopRight" }
         ];
 
         this._slots = [
-            { name: "banner", widthToHeightRatio:3, "id": "banner" },
-            { name: "ad", widthToHeightRatio:1, "id": "ad" },
-            { name: "onwards", widthToHeightRatio:1.5, "id": "onwards" }
+            { name: "banner", height: 300, width: 900, widthToHeightRatio:3, "id": "banner" },
+            { name: "articleTopRight", height: 300, width: 300, widthToHeightRatio:1, "id": "articleTopRight" },
+            { name: "onwards", height: 300, width: 450, widthToHeightRatio:1.5, "id": "onwards" }
         ];
 
     }
