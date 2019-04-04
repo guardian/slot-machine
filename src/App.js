@@ -9,10 +9,12 @@ import SaveAPI from './proxies/saveAPI';
 import Wizard from "./screens/wizard";
 import Landing from "./screens/landing";
 import Preview from "./screens/preview";
+import Profiles from "./screens/profiles";
 
 class App extends Component {
 
     constructor() {
+
         super();
 
         this.slotsAPI = new SlotsAPI();
@@ -47,6 +49,8 @@ class App extends Component {
         );
 
         const preview = () => <Preview slots={this.state.slots} />;
+        
+        const profiles = () => <Profiles />
 
         return (
             <div className="App">
@@ -62,6 +66,7 @@ class App extends Component {
                         <Route path="/" exact={true} component={landing} />
                         <Route path="/new" component={wizard} />
                         <Route path="/preview" component={preview} />
+                        <Route path="/profiles" component={profiles} />
                     </div>
                 </Router>
             </div>

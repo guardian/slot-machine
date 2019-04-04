@@ -21,6 +21,10 @@ body {
   text-align: center;
 }
 
+.profiles {
+  text-align: center;
+}
+
 .slot-outline {
   display: inline-block;
   border-radius: 0.2em;
