@@ -71,7 +71,7 @@ class App extends Component {
                     <AppBar position="static">
                         <Toolbar>
                             <Typography variant="h6" color="inherit" noWrap>
-                                Slot Machine
+                                <a href="/" className="toolbar-link">Slot Machine</a>
                             </Typography>
                         </Toolbar>
                     </AppBar>
@@ -86,7 +86,5 @@ class App extends Component {
     }
     
 }
-
-  
 
 export default App;

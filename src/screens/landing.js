@@ -8,7 +8,8 @@ class Landing extends Component {
         return (
             <div className="landing">
                 <h1>Welcome</h1>
-                <Link to="/new">create new profile</Link>
+                <p><Link to="/new">create new profile</Link></p>
+                <p><Link to="/preview">preview components</Link></p>
             </div>
         );
   
