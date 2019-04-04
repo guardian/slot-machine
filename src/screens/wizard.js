@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -43,8 +44,8 @@ class SlotChooserScreen extends Component {
 
         return (
             <div>
-                {slots}
                 <h2>Choose a slot type!</h2>
+                {slots}
             </div>
         );
   
@@ -73,8 +74,8 @@ class ComponentChooserScreen extends Component {
 
         return (
             <div>
-                {components}
                 <h2>Choose a visual component!</h2>
+                {components}
             </div>
         );
   
@@ -92,7 +93,7 @@ class RulesScreen extends Component {
             contributor: true,
             adblock: false,
             somethingelse: false,
-          };
+        };
 
     }
 
@@ -123,6 +124,8 @@ class RulesScreen extends Component {
         
         return (
         <div>
+
+            <h2>Enter Configuration!</h2>
 
             <form className="rules-form">
 
@@ -177,9 +180,22 @@ class RulesScreen extends Component {
 
             </form>
 
-            <h2>Enter Configuration!</h2>
-
         </div>
+        );
+  
+    }
+
+}
+
+class FinishedScreen extends Component {
+
+    render() {
+
+        return (
+            <div>
+                <p>Success! Your slot profile has been created.</p>
+                <p><Link to="/new">Back to home</Link></p>
+            </div>
         );
   
     }
@@ -207,19 +223,19 @@ class Wizard extends Component {
         super();
 
         this.state = {
-            currentScreen : 0,
+            currentScreenIdx : 0,
             wizardData: {}
-        }
+        };
 
     }
   
     render() {
 
-        // wizard finished (no more screens)
-
-        const finished = () => {
-            this.props.onFinished(this.state.wizardData);
-        }
+        const screens = [
+            <SlotChooserScreen slots={this.props.slots} onNext={(d)=>progress(screens, d)}/>,
+            <ComponentChooserScreen slot={this.state.wizardData.slotType} components={this.props.components} onNext={(d)=>progress(screens, d)} />,
+            <RulesScreen onNext={(d)=>progress(screens, d)} />,
+        ];
 
         // move to next screen
 
@@ -229,31 +245,28 @@ class Wizard extends Component {
             Object.assign(tmp, screenData);
             this.setState({wizardData: tmp});
 
-            if(this.state.currentScreen === screens.length-1){
-                finished();
-                return;
+            if(this.state.currentScreenIdx < screens.length-1){
+                console.log("Moving to next screen");
+                this.setState({
+                    currentScreenIdx: this.state.currentScreenIdx + 1
+                });
+            } else {
+                console.log("Moving to final screen");
+                this.props.save(this.state.wizardData);
+                this.setState({ finished: true });
             }
-
-            this.setState({
-                currentScreen: this.state.currentScreen + 1
-            });
 
         }
 
-        const screens = [
-            <SlotChooserScreen slots={this.props.slots} onNext={(d)=>progress(screens, d)}/>,
-            <ComponentChooserScreen slot={this.state.wizardData.slotType} components={this.props.components} onNext={(d)=>progress(screens, d)} />,
-            <RulesScreen onNext={(d)=>progress(screens, d)} />
-        ];
+        const screenToShow = this.state.finished ? <FinishedScreen /> : screens[this.state.currentScreenIdx];
 
         return (
             <div className="wizard">
 
-                <h1>New Profile!</h1>
+                <ProgressIndicator page={this.state.currentScreenIdx+1}/>
 
-                { screens[this.state.currentScreen] }
+                { screenToShow }
 
-                <ProgressIndicator page={this.state.currentScreen+1}/>
 
             </div>
         );

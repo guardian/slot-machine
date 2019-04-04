@@ -36,22 +36,7 @@ class App extends Component {
 
     }
 
-    componentDidMount() {
-        // contact 3rd party services, etc
-
-        this.setState({
-            components: this.slotsAPI.components(),
-            slots: this.slotsAPI.slots()
-        });
-
-    }
-
     render() {
-
-        const finishedProfileSetup = config => {
-            console.log("Wizard finished with profile configuration");
-            console.log(config);
-        };
 
         const landing = () => <Landing />;
 
@@ -59,7 +44,7 @@ class App extends Component {
             <Wizard
                 slots={this.state.slots}
                 components={this.state.components}
-                onFinished={config => finishedProfileSetup(config)}
+                save={ config => this.saveAPI.addProfile(config) }
             />
         );
 

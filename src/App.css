@@ -45,7 +45,7 @@ body {
   border-radius: 99em;
   font-weight: 700;
   color: #6e8dff;
-  margin: 4em;
+  margin-top: 2em;
 }
 
 .rules-form {
@@ -65,11 +65,11 @@ h1 {
 }
 
 h2 {
-  border-top: 1px solid #e6e6e6;
-  padding-top: 1em;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 1em;
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 3em;
+  margin-bottom: 2em;
 }
 
 .toolbar-link {
