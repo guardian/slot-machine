@@ -5,20 +5,35 @@ import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import SlotsAPI from "./proxies/slotsAPI";
+import SaveAPI from './proxies/saveAPI';
 import Wizard from "./screens/wizard";
 import Landing from "./screens/landing";
 import Preview from "./screens/preview";
 
 class App extends Component {
+
     constructor() {
         super();
 
         this.slotsAPI = new SlotsAPI();
+        this.saveAPI = new SaveAPI();
 
         this.state = {
             slots: [],
             components: []
         };
+
+    }
+
+    componentDidMount() {
+
+        // contact 3rd party services, etc
+
+        this.setState({
+            components: this.slotsAPI.components(),
+            slots: this.slotsAPI.slots()
+        });
+
     }
 
     componentDidMount() {
@@ -28,9 +43,11 @@ class App extends Component {
             components: this.slotsAPI.components(),
             slots: this.slotsAPI.slots()
         });
+
     }
 
     render() {
+
         const finishedProfileSetup = config => {
             console.log("Wizard finished with profile configuration");
             console.log(config);
@@ -54,7 +71,7 @@ class App extends Component {
                     <AppBar position="static">
                         <Toolbar>
                             <Typography variant="h6" color="inherit" noWrap>
-                                Slot Machine
+                                <a href="/" className="toolbar-link">Slot Machine</a>
                             </Typography>
                         </Toolbar>
                     </AppBar>
@@ -67,6 +84,7 @@ class App extends Component {
             </div>
         );
     }
+    
 }
 
 export default App;
