@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import SlotsAPI from "./proxies/slotsAPI";
-import SaveAPI from './proxies/saveAPI';
+import ProfilesAPI from './proxies/profilesAPI';
 import Wizard from "./screens/wizard";
 import Landing from "./screens/landing";
 import Preview from "./screens/preview";
@@ -18,11 +18,12 @@ class App extends Component {
         super();
 
         this.slotsAPI = new SlotsAPI();
-        this.saveAPI = new SaveAPI();
+        this.profilesAPI = new ProfilesAPI();
 
         this.state = {
             slots: [],
-            components: []
+            components: [],
+            profiles: []
         };
 
     }
@@ -31,7 +32,8 @@ class App extends Component {
 
         this.setState({
             components: this.slotsAPI.components(),
-            slots: this.slotsAPI.slots()
+            slots: this.slotsAPI.slots(),
+            profiles: this.profilesAPI.getProfiles()
         });
 
     }
@@ -44,13 +46,13 @@ class App extends Component {
             <Wizard
                 slots={this.state.slots}
                 components={this.state.components}
-                save={ config => this.saveAPI.addProfile(config) }
+                save={ config => this.profilesAPI.addProfile(config) }
             />
         );
 
         const preview = () => <Preview slots={this.state.slots} />;
         
-        const profiles = () => <Profiles />
+        const profiles = () => <Profiles profiles={this.state.profiles}/>
 
         return (
             <div className="App">
