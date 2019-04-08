@@ -55,7 +55,7 @@ class App extends Component {
         
         const profiles = () => <Profiles profiles={this.state.profiles} />
 
-        const profile = (id) => <Profile id={id} />
+        const profile = ({ match }) => <Profile profileName={match.params.name} profiles={this.state.profiles} />
 
         return (
             <div className="App">
@@ -72,7 +72,7 @@ class App extends Component {
                             <Route path="/" exact={true} component={landing} />
                             <Route path="/new" component={wizard} />
                             <Route path="/preview" component={preview} />
-                            <Route path="/profiles/:id" component={profile} />
+                            <Route path="/profiles/:name" component={profile} />
                             <Route path="/profiles" component={profiles} />
                         </Switch>
                     </div>

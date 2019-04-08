@@ -8,6 +8,7 @@ class SaveAPI {
         this._profiles = [
             {
                 name: "This is mock data",
+                component: "some component",
                 slot: { name: "banner" },
                 abtest: "This is mock data",
                 flags: []
