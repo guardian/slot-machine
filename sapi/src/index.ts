@@ -1,22 +1,21 @@
-import {siteSlots} from './data';
-import {Evaluation, Evaluator, Interest, Weight} from './types';
+import {guardianSlots} from './data';
+import {Evaluation, Evaluator, Interest, Slot, Weight} from './types';
 
 
 const main =
-    <T>(evaluators: Array<Evaluator<T>>, lookupDomRef: (slot: string) => T):
-        void => {
-          siteSlots.forEach(slot => {
-            const interests = evaluateForSlot(slot, evaluators);
-            const evaluation = combineInterestsIntoAnEvaluation<T>(interests);
-            evaluation.fillSlot(slot, lookupDomRef(slot));
-            if (evaluation.fillFallbackSlot !== undefined) {
-              evaluation.fillFallbackSlot(slot, lookupDomRef(slot));
-            }
-          });
-        };
+    <T>(evaluators: Array<Evaluator<T>>, slots: Array<Slot<T>>): void => {
+      slots.forEach(slot => {
+        const interests = evaluateForSlot(slot, evaluators);
+        const evaluation = combineInterestsIntoAnEvaluation<T>(interests);
+        evaluation.fillSlot(slot);
+        if (evaluation.fillFallbackSlot !== undefined) {
+          evaluation.fillFallbackSlot(slot);
+        }
+      });
+    };
 
 const evaluateForSlot =
-    <T>(slot: string, evaluators: Array<Evaluator<T>>): Array<Interest<T>> => {
+    <T>(slot: Slot<T>, evaluators: Array<Evaluator<T>>): Array<Interest<T>> => {
       return [{
         weight: Weight.Need,
         fillSlot: undefined,
@@ -27,8 +26,7 @@ const evaluateForSlot =
 
 const combineInterestsIntoAnEvaluation =
     <T>(interests: Array<Interest<T>>): Evaluation<T> => {
-      return {
-        fillSlot: (slot: string, domRef: T) => {},
-        fillFallbackSlot: undefined
-      };
+      return {fillSlot: (slot: Slot<T>) => {}, fillFallbackSlot: undefined};
     };
+
+export {main, guardianSlots};
