@@ -12,6 +12,20 @@ class SaveAPI {
                 slot: { name: "banner" },
                 abtest: "This is mock data",
                 flags: []
+            },
+            {
+                name: "This is mock data again",
+                component: "google ad",
+                slot: { name: "topRightArticle" },
+                abtest: "This is mock data",
+                flags: []
+            },
+            {
+                name: "What are we even doing",
+                component: "generic banner",
+                slot: { name: "onwards" },
+                abtest: "This is mock data",
+                flags: []
             }
         ];
 

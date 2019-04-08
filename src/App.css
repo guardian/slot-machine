@@ -9,10 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
-
-}
-
 .app-content {
   padding: 2em;
 }
@@ -85,103 +81,25 @@ h2 {
   text-decoration: none;
 }
 
-
-
-
-
-.website {
-  width: 25%;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 2px;
-  grid-auto-rows: minmax(70px, auto);
-  box-shadow: 0px 0px 20px 0px rgb(160, 160, 160);
-  opacity: 0.7;
+.spacer {
+  flex: 1 1 100%;
 }
 
-.website div {
-  border: 1px solid black;
+.add-profile-hero {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 1em;
+  text-align: left;
+  background-color: #3dd23d !important;
+
 }
 
-
-.one {
-  background-color:#052962;
-  grid-column: 1 / 7;
-  grid-row: 1;
+.add-profile-hero h6 {
+  color: white;
+  margin-left: 0.5em;
 }
 
-
-
-.two { 
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.three {
-  grid-column: 2/6;
-  grid-row: 2;
-}
-
-.four {
-  grid-column: 6;
-  grid-row: 2;
-}
-
-
-
-.five { 
-  grid-column: 1;
-  grid-row: 3;
-}
-
-.six {
-  grid-column: 2/6;
-  grid-row: 3;
-}
-
-.seven {
-  grid-column: 6;
-  grid-row: 3;
-}
-
-
-
-.eight { 
-  grid-column: 1;
-  grid-row: 4;
-}
-
-.nine {
-  grid-column: 2/6;
-  grid-row: 4;
-}
-
-.ten {
-  grid-column: 6;
-  grid-row: 4;
-}
-
-
-
-.eleven { 
-  grid-column: 1;
-  grid-row: 5;
-}
-
-.twelve {
-  grid-column: 2/6;
-  grid-row: 5;
-}
-
-.thirteen {
-  grid-column: 6;
-  grid-row: 5;
-}
-
-
-
-.fourteen {
-  background-color:#052962;
-  grid-column: 1 / 7;
-  grid-row: 6;
+.add-button {
+  float: right;
+  color: white;
 }
