@@ -5,6 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Link } from 'react-router-dom';
 
 class Profiles extends Component {
 
@@ -15,10 +16,10 @@ class Profiles extends Component {
         const rows = this.props.profiles.map(p => (
             <TableRow>
                 <TableCell component="th" scope="row">
-                    {p.slot.name}
+                <Link to={"profiles/"+p.name}>{p.slot.name}</Link>
                 </TableCell>
-                <TableCell>{p.name}</TableCell>
-                <TableCell>{p.abtest}</TableCell>
+                <TableCell><Link to={"profiles/"+p.name}>{p.name}</Link></TableCell>
+                <TableCell><Link to={"profiles/"+p.name}>{p.abtest}</Link></TableCell>
             </TableRow>
         ));
 

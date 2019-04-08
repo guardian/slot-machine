@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import SlotsAPI from "./proxies/slotsAPI";
 import ProfilesAPI from './proxies/profilesAPI';
 import Wizard from "./screens/wizard";
 import Landing from "./screens/landing";
 import Preview from "./screens/preview";
+import Profile from "./screens/profile";
 import Profiles from "./screens/profiles";
 
 class App extends Component {
@@ -52,7 +53,9 @@ class App extends Component {
 
         const preview = () => <Preview slots={this.state.slots} />;
         
-        const profiles = () => <Profiles profiles={this.state.profiles}/>
+        const profiles = () => <Profiles profiles={this.state.profiles} />
+
+        const profile = (id) => <Profile id={id} />
 
         return (
             <div className="App">
@@ -65,10 +68,13 @@ class App extends Component {
                         </Toolbar>
                     </AppBar>
                     <div className="app-content">
-                        <Route path="/" exact={true} component={landing} />
-                        <Route path="/new" component={wizard} />
-                        <Route path="/preview" component={preview} />
-                        <Route path="/profiles" component={profiles} />
+                        <Switch>
+                            <Route path="/" exact={true} component={landing} />
+                            <Route path="/new" component={wizard} />
+                            <Route path="/preview" component={preview} />
+                            <Route path="/profiles/:id" component={profile} />
+                            <Route path="/profiles" component={profiles} />
+                        </Switch>
                     </div>
                 </Router>
             </div>
