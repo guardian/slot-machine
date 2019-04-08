@@ -11,6 +11,7 @@ import Landing from "./screens/landing";
 import Preview from "./screens/preview";
 import Profile from "./screens/profile";
 import Profiles from "./screens/profiles";
+import Website from "./screens/website";
 
 class App extends Component {
 
@@ -52,6 +53,8 @@ class App extends Component {
         );
 
         const preview = () => <Preview slots={this.state.slots} />;
+
+        const website = () => <Website/>;
         
         const profiles = () => <Profiles profiles={this.state.profiles} />
 
@@ -74,6 +77,7 @@ class App extends Component {
                             <Route path="/preview" component={preview} />
                             <Route path="/profiles/:name" component={profile} />
                             <Route path="/profiles" component={profiles} />
+                            <Route path="/website" component={website} />
                         </Switch>
                     </div>
                 </Router>
