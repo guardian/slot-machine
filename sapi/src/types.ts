@@ -1,28 +1,31 @@
 interface Dimensions {
-    width: number;
-    height: number;
+  readonly width: number;
+  readonly height: number;
 }
 
 enum Weight {
-    None,
-    Want,
-    Need
+  None,
+  Want,
+  Need
 }
 
-interface Interest {
-    weight: Weight;
-    fillSlot: ((slot: string, domRef: any) => void) | undefined;
-    allowFallback: boolean;
-    fillFallbackSlot: ((slot: string, domRef: any) => void) | undefined;
+interface Slot<T> {
+  readonly id: string;
+  readonly domRef: T;
 }
 
-interface Evaluation {
-    fillSlot: ((slot: string, domRef: any) => void);
-    fillFallbackSlot: ((slot: string, domRef: any) => void) | undefined;
+interface Interest<T> {
+  readonly weight: Weight;
+  readonly fillSlot: ((slot: Slot<T>) => void)|undefined;
+  readonly allowFallback: boolean;
+  readonly fillFallbackSlot: ((slot: Slot<T>) => void)|undefined;
 }
 
-type Evaluator = (slot: string, index: number) => Interest
+interface Evaluation<T> {
+  readonly fillSlot: ((slot: Slot<T>) => void);
+  readonly fillFallbackSlot: ((slot: Slot<T>) => void)|undefined;
+}
 
-export {
-    Dimensions, Weight, Evaluation, Evaluator, Interest
-};
+type Evaluator<T> = (slot: string, index: number) => Interest<T>;
+
+export {Dimensions, Weight, Evaluation, Evaluator, Interest, Slot};
