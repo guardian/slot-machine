@@ -91,6 +91,15 @@ h2 {
   margin-bottom: 1em;
   text-align: left;
   background-color: #3dd23d !important;
+}
+
+.add-profile-hero:hover {
+  background-color: #4be64b !important;
+  margin-left: 19.5%;
+  margin-right: 19.5%;
+  transition-property: margin-left, margin-right;
+  transition-duration: 1s;
+  transition-delay: 0s;
 
 }
 
