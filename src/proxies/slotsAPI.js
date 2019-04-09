@@ -6,19 +6,19 @@ class SlotsAPI {
     constructor() {
 
         this._components = [
-            { name: "EpicBanner", slot: "banner" },
-            { name: "AskForMoneyBanner", slot: "banner" },
-            { name: "RelatedStories", slot: "onwards" },
-            { name: "MostRead", slot: "onwards" },
-            { name: "LongestRead", slot: "onwards" },
-            { name: "Outbrain", slot: "articleTopRight" },
-            { name: "GoogleAd", slot: "articleTopRight" }
+            { name: "EpicBanner", slot: "banner", id: "EpicBanner" },
+            { name: "AskForMoneyBanner", slot: "banner", id:"AskForMoneyBanner" },
+            { name: "RelatedStories", slot: "onwards", id:"RelatedStories" },
+            { name: "MostRead", slot: "onwards", id:"MostRead" },
+            { name: "LongestRead", slot: "onwards", id:"LongestRead" },
+            { name: "Outbrain", slot: "articleTopRight", id:"Outbrain" },
+            { name: "GoogleAd", slot: "articleTopRight", id:"GoogleAd" }
         ];
 
         this._slots = [
-            { name: "banner", height: 300, width: 900, widthToHeightRatio:3, "id": "banner" },
-            { name: "articleTopRight", height: 300, width: 300, widthToHeightRatio:1, "id": "articleTopRight" },
-            { name: "onwards", height: 300, width: 450, widthToHeightRatio:1.5, "id": "onwards" }
+            { name: "banner", height: 300, width: 900, widthToHeightRatio:3, id: "banner" },
+            { name: "articleTopRight", height: 300, width: 300, widthToHeightRatio:1, id: "articleTopRight" },
+            { name: "onwards", height: 300, width: 450, widthToHeightRatio:1.5, id: "onwards" }
         ];
 
     }
