@@ -3,37 +3,9 @@ import AppConfig from '../config';
 
 class SaveAPI {
 
-    constructor() {
-
-        this._profiles = [
-            {
-                name: "This is mock data",
-                component: "some component",
-                slot: { name: "banner" },
-                abtest: "This is mock data",
-                flags: []
-            },
-            {
-                name: "This is mock data again",
-                component: "google ad",
-                slot: { name: "topRightArticle" },
-                abtest: "This is mock data",
-                flags: []
-            },
-            {
-                name: "What are we even doing",
-                component: "generic banner",
-                slot: { name: "onwards" },
-                abtest: "This is mock data",
-                flags: []
-            }
-        ];
-
-    }
-
     getProfiles(config) {
 
-        const endpoint = (new AppConfig()).getProfileEndpoint;
+        const endpoint = (new AppConfig()).profileEndpoint;
         return fetch(endpoint, {            
             method: "GET", 
             mode: "cors", 
