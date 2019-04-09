@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SlotsAPI from "./proxies/slotsAPI";
 import ProfilesAPI from './proxies/profilesAPI';
 import Wizard from "./screens/wizard";
-import Landing from "./screens/landing";
 import Preview from "./screens/preview";
 import Profile from "./screens/profile";
 import Profiles from "./screens/profiles";
@@ -35,8 +34,19 @@ class App extends Component {
         this.setState({
             components: this.slotsAPI.components(),
             slots: this.slotsAPI.slots(),
-            profiles: this.profilesAPI.getProfiles()
+            profiles: []
         });
+
+        this.profilesAPI.getProfiles().then(profiles=>{
+
+            console.log("Profile data: ");
+            console.log(profiles);
+
+            this.setState({
+                profiles: profiles
+            });
+
+        })
 
     }
 

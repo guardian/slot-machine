@@ -31,6 +31,22 @@ class SaveAPI {
 
     }
 
+    getProfiles(config) {
+
+        const endpoint = (new AppConfig()).getProfileEndpoint;
+        return fetch(endpoint, {            
+            method: "GET", 
+            mode: "cors", 
+            cache: "no-cache", 
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+        }).then(response => response.json());
+
+    }
+
     addProfile(config) {
 
         console.log("Saving data");
@@ -50,12 +66,6 @@ class SaveAPI {
             body: JSON.stringify(config), 
         })
         .then(response => response.json());
-
-    }
-
-    getProfiles() {
-
-        return this._profiles;
 
     }
 

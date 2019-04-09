@@ -25,10 +25,10 @@ class Profiles extends Component {
         const rows = this.props.profiles.map(p => (
             <TableRow>
                 <TableCell component="th" scope="row">
-                <Link to={"profiles/"+p.name}>{p.slot.name}</Link>
+                <Link to={"profiles/"+p.Name}>{p.SlotID}</Link>
                 </TableCell>
-                <TableCell><Link to={"profiles/"+p.name}>{p.name}</Link></TableCell>
-                <TableCell><Link to={"profiles/"+p.name}>{p.abtest}</Link></TableCell>
+                <TableCell><Link to={"profiles/"+p.Name}>{p.Name}</Link></TableCell>
+                <TableCell><Link to={"profiles/"+p.Name}>AB-TEST-HERE</Link></TableCell>
             </TableRow>
         ));
 
@@ -76,7 +76,7 @@ class Profiles extends Component {
                                 <FilterListIcon />
                             </IconButton>
                         </Tooltip>
-
+                        
                     </Toolbar>
 
                     <Table>
