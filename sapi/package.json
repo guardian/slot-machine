@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "check": "gts check",
     "clean": "gts clean",
     "compile": "tsc -p .",
@@ -20,8 +20,27 @@
     "posttest": "npm run check",
     "build": "tsc -p . && gts check"
   },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false,
+        "tsConfigFile": "tsconfig.json"
+      }
+    }
+  },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "gts": "^0.9.0",
+    "jest": "^24.7.1",
+    "ts-jest": "^24.0.2",
     "typescript": "~3.1.0"
   }
 }
