@@ -42,8 +42,6 @@ class App extends Component {
 
     render() {
 
-        const landing = () => <Landing />;
-
         const wizard = () => (
             <Wizard
                 slots={this.state.slots}
@@ -72,7 +70,7 @@ class App extends Component {
                     </AppBar>
                     <div className="app-content">
                         <Switch>
-                            <Route path="/" exact={true} component={landing} />
+                            <Route path="/" exact={true} component={profiles} />
                             <Route path="/new" component={wizard} />
                             <Route path="/preview" component={preview} />
                             <Route path="/profiles/:name" component={profile} />

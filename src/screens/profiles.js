@@ -6,12 +6,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Toolbar from '@material-ui/core/Toolbar';
 
-
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
 
 import FilterListIcon from '@material-ui/icons/FilterList';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -37,22 +36,20 @@ class Profiles extends Component {
             <div className="profiles">
                 <h1>Profiles</h1>
 
+                <Link className="toolbar-link" to="/new">
                 <Paper className="add-profile-hero">
 
                     <Toolbar>
 
-                        <div>
-                        <Typography variant="h6">
-                            <Link className="toolbar-link" to="/new">Add</Link>
+                        <Typography variant="h6" style={{width: "100%"}}>
+                            Add Profile
                         </Typography>
-
-                        </div>
                         
                         <div className="spacer" />
 
-                        <Tooltip title="Filter list">
-                            <IconButton aria-label="Filter list">
-                                <FilterListIcon />
+                        <Tooltip title="Add Profile">
+                            <IconButton aria-label="Add Profile">
+                                <ArrowForwardIcon />
                             </IconButton>
                         </Tooltip>
 
@@ -60,6 +57,7 @@ class Profiles extends Component {
 
 
                 </Paper>
+                </Link>
 
                 <Paper style={{marginLeft:"20%", marginRight:"20%"}}>
 
@@ -94,6 +92,9 @@ class Profiles extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
+
+                <p><Link to="/preview">preview components</Link></p>
+
             </div>
         );
 

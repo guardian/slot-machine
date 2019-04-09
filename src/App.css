@@ -96,10 +96,14 @@ h2 {
 
 .add-profile-hero h6 {
   color: white;
-  margin-left: 0.5em;
 }
 
 .add-button {
   float: right;
   color: white;
+}
+
+table a {
+  color: #4a79b7;
+  text-decoration: none;
 }
