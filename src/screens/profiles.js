@@ -28,7 +28,7 @@ class Profiles extends Component {
                 <Link to={"profiles/"+p.Name}>{p.SlotID}</Link>
                 </TableCell>
                 <TableCell><Link to={"profiles/"+p.Name}>{p.Name}</Link></TableCell>
-                <TableCell><Link to={"profiles/"+p.Name}>AB-TEST-HERE</Link></TableCell>
+                <TableCell><Link to={"profiles/"+p.Name}>{p.Conditions.ABTest}</Link></TableCell>
             </TableRow>
         ));
 

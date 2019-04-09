@@ -34,8 +34,8 @@ class SlotChooserScreen extends Component {
 
     render() {
   
-        const progress = (typ) => {
-            this.props.onNext({slotType: typ});
+        const progress = (slot) => {
+            this.props.onNext({slot: slot, SlotID: slot.id});
         }
 
         const slots = this.props.slots.map(
@@ -57,18 +57,18 @@ class ComponentChooserScreen extends Component {
 
     render() {
 
-        const progress = (name) => {
-            this.props.onNext({component: name});
+        const progress = (id) => {
+            this.props.onNext({ComponentID: id});
         }
 
         const components = this.props.components
-            .filter((c)=>c.slot === this.props.slot.name)
+            .filter((c)=>c.slot === this.props.slot.id)
             .map((c)=>
                 <SlotOutline 
                     key={c.name} 
                     widthToHeightRatio={this.props.slot.widthToHeightRatio} 
                     name={c.name} 
-                    onClick={()=>progress(c.name)}
+                    onClick={()=>progress(c.id)}
                 />
             );
 
@@ -105,11 +105,10 @@ class RulesScreen extends Component {
 
         const progress = () => {
             this.props.onNext({
-                name: this.state.name, 
-                abtest: this.state.abtest, 
-                flags: {
-                    contributor: this.state.contributor,
-                    adblock: this.state.adblock
+                Name: this.state.name, 
+                Conditions: {
+                    IsContributor: this.state.contributor,
+                    ABTest: this.state.abtest
                 }
             });
         }
@@ -204,7 +203,7 @@ class FinishedScreen extends Component {
         return (
             <div>
                 <p>Success! Your slot profile has been created.</p>
-                <p><Link to="/new">Back to home</Link></p>
+                <p><Link to="/">Back to home</Link></p>
             </div>
         );
   
@@ -243,7 +242,7 @@ class Wizard extends Component {
 
         const screens = [
             <SlotChooserScreen slots={this.props.slots} onNext={(d)=>progress(screens, d)}/>,
-            <ComponentChooserScreen slot={this.state.wizardData.slotType} components={this.props.components} onNext={(d)=>progress(screens, d)} />,
+            <ComponentChooserScreen slot={this.state.wizardData.slot} components={this.props.components} onNext={(d)=>progress(screens, d)} />,
             <RulesScreen onNext={(d)=>progress(screens, d)} />,
         ];
 

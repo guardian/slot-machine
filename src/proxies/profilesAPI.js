@@ -36,8 +36,7 @@ class SaveAPI {
             redirect: "follow",
             referrer: "no-referrer",
             body: JSON.stringify(config), 
-        })
-        .then(response => response.json());
+        });
 
     }
 
