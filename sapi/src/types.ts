@@ -16,16 +16,16 @@ interface Slot<T> {
 
 interface Interest<T> {
   readonly weight: Weight;
-  readonly fillSlot: ((slot: Slot<T>) => void)|undefined;
+  readonly fillSlot?: ((slot: Slot<T>) => void);
   readonly allowFallback: boolean;
-  readonly fillFallbackSlot: ((slot: Slot<T>) => void)|undefined;
+  readonly fillFallbackSlot?: ((slot: Slot<T>) => void);
 }
 
-interface Evaluation<T> {
+interface SlotAction<T> {
   readonly fillSlot: ((slot: Slot<T>) => void);
-  readonly fillFallbackSlot: ((slot: Slot<T>) => void)|undefined;
+  readonly fillFallbackSlot?: ((slot: Slot<T>) => void);
 }
 
 type Evaluator<T> = (slot: string, index: number) => Interest<T>;
 
-export {Dimensions, Weight, Evaluation, Evaluator, Interest, Slot};
+export {Dimensions, Weight, SlotAction, Evaluator, Interest, Slot};
