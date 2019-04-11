@@ -109,7 +109,7 @@ class RulesScreen extends Component {
         this.state = {
             contributor: true,
             adblock: false,
-            somethingelse: false,
+            hasCookieConsent: false,
             name: "",
             abtest: ""
         };
@@ -118,14 +118,15 @@ class RulesScreen extends Component {
 
     render() {
 
-        const { contributor, adblock, somethingelse } = this.state;
+        const { contributor, adblock, hasCookieConsent } = this.state;
 
         const progress = () => {
             this.props.onNext({
                 Name: this.state.name, 
                 Conditions: {
                     IsContributor: this.state.contributor,
-                    ABTest: this.state.abtest
+                    ABTest: this.state.abtest,
+                    HasCookieConsent: this.state.hasCookieConsent
                 }
             });
         }
@@ -138,13 +139,13 @@ class RulesScreen extends Component {
             this.setState({abtest: a.target.value});
         }
 
-        const handleChange = (a)=> {
+        const flagChanged = (a)=> {
             if(a === "contributor"){
                 this.setState({contributor: !this.state.contributor})
             } else if(a === "adblock"){
                 this.setState({adblock: !this.state.adblock})
-            } else if(a === "somethingelse"){
-                this.setState({somethingelse: !this.state.somethingelse})
+            } else if(a === "hasCookieConsent"){
+                this.setState({hasCookieConsent: !this.state.hasCookieConsent})
             }
         };
         
@@ -164,7 +165,7 @@ class RulesScreen extends Component {
                 <div><FormControl margin="normal" fullWidth={true}>
                     <InputLabel htmlFor="abtest-input">AB Test</InputLabel>
                     <Input id="abtest-input" value={this.state.abtest} fullWidth={true} aria-describedby="abtest-helper-text" onChange={abtestChanged} />
-                    <FormHelperText id="abtest-helper-text">All slot profiles must have an AB Test</FormHelperText>
+                    <FormHelperText id="abtest-helper-text">Associated AB Test</FormHelperText>
                 </FormControl></div>
 
                 <FormControl component="fieldset" margin="normal" fullWidth={true}>
@@ -172,25 +173,25 @@ class RulesScreen extends Component {
                     <FormGroup>
                         <FormControlLabel
                         control={
-                            <Checkbox checked={contributor} onChange={()=>handleChange('contributor')} value="gilad" />
+                            <Checkbox checked={contributor} onChange={()=>flagChanged('contributor')} value="gilad" />
                         }
                         label="Must be contributor"
                         />
                         <FormControlLabel
                         control={
-                            <Checkbox checked={adblock} onChange={()=>handleChange('adblock')} value="jason" />
+                            <Checkbox checked={adblock} onChange={()=>flagChanged('adblock')} value="jason" />
                         }
                         label="Must have adblock enabled"
                         />
                         <FormControlLabel
                         control={
                             <Checkbox
-                            checked={somethingelse}
-                            onChange={()=>handleChange('somethingelse')}
+                            checked={hasCookieConsent}
+                            onChange={()=>flagChanged('hasCookieConsent')}
                             value="antoine"
                             />
                         }
-                        label="Something else"
+                        label="Has consented to Cookies"
                         />
                     </FormGroup>
 
