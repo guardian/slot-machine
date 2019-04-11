@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import SlotsAPI from "./proxies/slotsAPI";
@@ -11,6 +8,7 @@ import Preview from "./screens/preview";
 import Profile from "./screens/profile";
 import Profiles from "./screens/profiles";
 import Website from "./screens/website";
+import SlotMachineToolBar from "./screens/appbar";
 
 class App extends Component {
 
@@ -72,13 +70,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Router>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                <a href="/" className="toolbar-link">Slot Machine</a>
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
+                    <SlotMachineToolBar />
                     <div className="app-content">
                         <Switch>
                             <Route path="/" exact={true} component={profiles} />
