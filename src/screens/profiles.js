@@ -23,7 +23,7 @@ class Profiles extends Component {
         console.log(this.props.profiles);
 
         const rows = this.props.profiles.map(p => (
-            <TableRow>
+            <TableRow key={p.Name}>
                 <TableCell component="th" scope="row">
                 <Link to={"profiles/"+p.Name}>{p.SlotID}</Link>
                 </TableCell>
@@ -54,7 +54,6 @@ class Profiles extends Component {
                         </Tooltip>
 
                     </Toolbar>
-
 
                 </Paper>
                 </Link>

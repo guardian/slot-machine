@@ -57,21 +57,23 @@ class ComponentChooserScreen extends Component {
 
     render() {
 
+        console.log("Rendering component chooser screen. My components are");
+        console.log(this.props.components);
+
         const progress = (id) => {
             this.props.onNext({ComponentID: id});
         }
-
+        
         const components = this.props.components
-            .filter((c)=>c.slot === this.props.slot.id)
+            .filter((c)=>c.SlotID === this.props.slot.id)
             .map((c)=>
                 <SlotOutline 
-                    key={c.name} 
+                    key={c.Name} 
                     widthToHeightRatio={this.props.slot.widthToHeightRatio} 
-                    name={c.name} 
-                    onClick={()=>progress(c.id)}
+                    name={c.Name} 
+                    onClick={()=>progress(c.ID)}
                 />
             );
-
         return (
             <div>
                 <h2>Choose a visual component!</h2>

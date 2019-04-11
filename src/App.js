@@ -32,18 +32,22 @@ class App extends Component {
     componentDidMount() {
 
         this.setState({
-            components: this.slotsAPI.components(),
+            components: [],
             slots: this.slotsAPI.slots(),
             profiles: []
         });
 
-        this.profilesAPI.getProfiles().then(profiles=>{
-
+        this.profilesAPI.getProfiles().then( profiles => {
             this.setState({
                 profiles: profiles
             });
+        });
 
-        })
+        this.slotsAPI.components().then( components => {
+            this.setState({
+                components: components
+            });
+        });
 
     }
 
