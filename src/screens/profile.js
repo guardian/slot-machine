@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
 
 class Profile extends Component {
 
@@ -9,12 +10,12 @@ class Profile extends Component {
         if(myProfile === undefined){
             return <div>No profile with that name exists</div>;
         } else {
-            return <div className="profile">
-                <h2>{myProfile.Name}</h2>
-                <p>abtest: AB-TEST-HERE</p>
+            return <Paper className="profile">
+                <h3>{myProfile.Name}</h3>
+                <p>abtest: {myProfile.Conditions.ABTest}</p>
                 <p>slot: {myProfile.SlotID}</p>
                 <p>component: {myProfile.ComponentID}</p>
-            </div>;
+            </Paper>;
         }
     }
 
