@@ -39,9 +39,6 @@ class App extends Component {
 
         this.profilesAPI.getProfiles().then(profiles=>{
 
-            console.log("Profile data: ");
-            console.log(profiles);
-
             this.setState({
                 profiles: profiles
             });

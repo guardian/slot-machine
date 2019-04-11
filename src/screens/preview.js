@@ -34,13 +34,13 @@ class Preview extends Component {
     componentDidMount(){
 
         if(this.props.slots.length > 0){
-            this.state = {
+            this.setState({
                 componentURL: "",
                 format: this.props.slots[0].name,
                 height: this.props.slots[0].height,
                 width: this.props.slots[0].width,
                 componentMarkup: ""
-            };
+            });
         }
 
     }
