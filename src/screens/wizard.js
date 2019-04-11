@@ -74,12 +74,27 @@ class ComponentChooserScreen extends Component {
                     onClick={()=>progress(c.ID)}
                 />
             );
-        return (
-            <div>
-                <h2>Choose a visual component!</h2>
-                {components}
-            </div>
-        );
+
+        if(components.length === 0){
+
+            return (
+                <div>
+                    <h2>Choose a visual component!</h2>
+                    <p className="oops">There are no components available for this slot type :(</p>
+                </div>
+            );
+      
+        } else {
+
+            return (
+                <div>
+                    <h2>Choose a visual component!</h2>
+                    {components}
+                </div>
+            );
+
+
+        }
   
     }
 

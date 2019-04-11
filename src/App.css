@@ -65,6 +65,10 @@ body {
   text-align: center;
 }
 
+.oops {
+  color: gray;
+}
+
 h1 {
   font-family: Caveat;
   font-size: 2.5em;
