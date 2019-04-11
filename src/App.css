@@ -22,7 +22,9 @@ body {
 }
 
 .profile {
-  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 1em;
 }
 
 .slot-outline {
@@ -98,7 +100,7 @@ h2 {
   margin-left: 19.5%;
   margin-right: 19.5%;
   transition-property: margin-left, margin-right;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   transition-delay: 0s;
 
 }
